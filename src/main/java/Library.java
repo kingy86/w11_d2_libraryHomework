@@ -2,11 +2,30 @@ import java.util.ArrayList;
 
 public class Library {
 
-    private ArrayList<Book>book;
     private int capacity;
+    private ArrayList<Book> collectionOfBooks;
 
     public Library(int capacity){
-        this.book = new ArrayList<>();
-        this.capacity = 10;
+        this.collectionOfBooks = new ArrayList<Book>();
+        this.capacity = 3;
+    }
+
+    public int bookCount(){
+        return collectionOfBooks.size();
+    }
+
+    public boolean addBook(Book book){
+        if (this.checkCapacity()){
+            return false;
+        }
+        collectionOfBooks.add(book);
+        return true;
+    }
+
+    public boolean checkCapacity(){
+        if(this.bookCount() >= this.capacity)
+            return true;
+        return false;
+
     }
 }
